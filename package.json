@@ -1,0 +1,20 @@
+{
+  "name": "demo-send-bodytemp-iothub",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://jirachaic@dev.azure.com/jirachaic/demo-azure-iot-hub/_git/demo-send-telemetry-to-iothub",
+  "author": "Jirachai C. <jirachai.c@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "start": "yarn build && node dist/index.js"
+  },
+  "dependencies": {
+    "azure-iot-device": "^1.17.3",
+    "azure-iot-device-mqtt": "^1.15.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.2"
+  }
+}
