@@ -1,10 +1,12 @@
+require('dotenv').config()
+
 import { Mqtt } from 'azure-iot-device-mqtt'
 import { Client as DeviceClient } from 'azure-iot-device'
 import { Message } from 'azure-iot-device'
 
 // Using the Azure CLI:
 // az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
-const connectionString: string = 'HostName=jirachai-iothub.azure-devices.net;DeviceId=device01;SharedAccessKey=ggTrhaMjqKAK6Xqz402avyT1xCyvTpfhL42jsWkM/Lc='
+const connectionString: string = process.env.DEVICE_CONNECTION_STRING || '{YOUR_DEVICE_CONNECTION_STRING}'
 const client: DeviceClient = DeviceClient.fromConnectionString(connectionString, Mqtt)
 
 // -------------------

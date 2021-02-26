@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "azure-iot-device": "^1.17.3",
-    "azure-iot-device-mqtt": "^1.15.3"
+    "azure-iot-device-mqtt": "^1.15.3",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "typescript": "^4.2.2"
