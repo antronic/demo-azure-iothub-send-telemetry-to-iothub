@@ -11,7 +11,7 @@ const client: DeviceClient = DeviceClient.fromConnectionString(connectionString,
 
 // -------------------
 function randomRange(lowest: number, highest: number) {
-  return Math.random() * (highest - lowest) + lowest
+  return parseFloat((Math.random() * (highest - lowest) + lowest).toFixed(2))
 }
 
 // ----------------------
