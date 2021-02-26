@@ -199,6 +199,43 @@ azure-iot-mqtt-base@1.12.7:
     mqtt "^4.0.0"
     uuid "^3.3.2"
 
+azure-iot-provisioning-device-mqtt@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/azure-iot-provisioning-device-mqtt/-/azure-iot-provisioning-device-mqtt-1.7.7.tgz#6ec7a5dd3541ed6d3fbf7f8c59be70d4cbc9d682"
+  integrity sha512-z6fCz9FwsU/OjzBfDDnOt+q5xLT5lwbj3yv3HV4taL40DEyVYkorbXT3XYaIkdRpcHQoxTJ0Gq5uUOSSRhDxBA==
+  dependencies:
+    azure-iot-common "1.12.7"
+    azure-iot-mqtt-base "1.12.7"
+    azure-iot-provisioning-device "1.8.7"
+    debug "^4.1.1"
+    machina "^4.0.2"
+    uuid "^3.3.2"
+
+azure-iot-provisioning-device@1.8.7, azure-iot-provisioning-device@^1.8.7:
+  version "1.8.7"
+  resolved "https://registry.yarnpkg.com/azure-iot-provisioning-device/-/azure-iot-provisioning-device-1.8.7.tgz#313624360a480f1adcb1644c7aadc228ecb6aef0"
+  integrity sha512-t+KtRnr/y3eEUQMYpxvpJ8lMGajMDpdWD/RN/JomskgsQeB51ppFPt6uiSllnf0ovNPSQrkxZpfkMfbtHkhcZw==
+  dependencies:
+    azure-iot-common "1.12.7"
+    debug "^4.1.1"
+    machina "^4.0.2"
+
+azure-iot-security-symmetric-key@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/azure-iot-security-symmetric-key/-/azure-iot-security-symmetric-key-1.7.7.tgz#2f706b3925b37b4afedca44dddac000d11e9af4a"
+  integrity sha512-ewaRohODx2hn5ADG5xZ4dHqcIyYb45M2CTSoh6eOlWZKOwuLZTTX8jn1Dt+Dja0S7UfQehQqe1HgIt07+bjFTQ==
+  dependencies:
+    azure-iot-common "1.12.7"
+    debug "^4.1.1"
+
+azure-iot-security-x509@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/azure-iot-security-x509/-/azure-iot-security-x509-1.7.7.tgz#61f8edd7ad3b086de7edc2df869aca761617dd36"
+  integrity sha512-U2JTw5sRplwsWv0cP7MKYp4zJP7nVh1JneVoyIKQT2YKhXAYNNzD26YNQyWZOYBUejxrgsqoOL0NxAlM5R4ULQ==
+  dependencies:
+    azure-iot-common "1.12.7"
+    debug "^4.1.1"
+
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -281,6 +318,11 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+
+crypto@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/crypto/-/crypto-1.0.1.tgz#2af1b7cad8175d24c8a1b0778255794a21803037"
+  integrity sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==
 
 debug@^4.1.1:
   version "4.3.1"

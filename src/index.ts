@@ -4,15 +4,23 @@ import { Mqtt } from 'azure-iot-device-mqtt'
 import { Client as DeviceClient } from 'azure-iot-device'
 import { Message } from 'azure-iot-device'
 
+import { provisionDevice, provisionGroupDevice, provisionX509Device } from './dps'
+
 // Using the Azure CLI:
 // az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
-const connectionString: string = process.env.DEVICE_CONNECTION_STRING || '{YOUR_DEVICE_CONNECTION_STRING}'
-const client: DeviceClient = DeviceClient.fromConnectionString(connectionString, Mqtt)
+let connectionString: string = process.env.DEVICE_CONNECTION_STRING || '{YOUR_DEVICE_CONNECTION_STRING}'
+
+const symmetricKey = process.env.IOTHUB_DEVICE_DPS_DEVICE_KEY || ''
+
+const modelIdObject = {
+  // modelId: 'dtmi:jirachaiWorld:myIotSimulation5y6;1'
+}
 
 // -------------------
 function randomRange(lowest: number, highest: number) {
   return parseFloat((Math.random() * (highest - lowest) + lowest).toFixed(2))
 }
+// -------------------
 
 // ----------------------
 // --- Temperature Range
@@ -26,6 +34,7 @@ const HIGHEST_BODYTEMP = 40
 const LOWEST_DISTANCE = 10
 const HIGHEST_DISTANCE = 30
 
+// Create the message for send to IoT Hub
 function createMessage(): Message {
   const bodyTemp = randomRange(LOWEST_BODYTEMP, HIGHEST_BODYTEMP)
   const distance = randomRange(LOWEST_DISTANCE, HIGHEST_DISTANCE)
@@ -35,11 +44,14 @@ function createMessage(): Message {
   // Add a custom application property to the message.
   // An IoT hub can filter on these properties without access to the message body.
   message.properties.add('highTempAlert', bodyTemp > 37.5 ? 'true' : 'false')
+  message.contentType = 'application/json'
+  message.contentEncoding = 'utf-8'
 
   return message
 }
 
-function sendMessage() {
+// Send the message to IoT Hub via initated client
+function sendMessage(client: DeviceClient) {
   // Create sample random message
   const message = createMessage()
 
@@ -53,9 +65,38 @@ function sendMessage() {
   })
 }
 
-function main() {
-  sendMessage()
-  setInterval(sendMessage, 10000)
+// ---------------------------------------------------------------------------------------
+
+function listenMessageFromCloud(client: DeviceClient) {
+
+}
+
+
+// ---------------------------------------------------------------------------------------
+
+// Main function for start the application
+async function main() {
+  // For enroll as individual
+  // connectionString = await provisionDevice(symmetricKey)
+
+  // For enroll as the group
+  // connectionString = await provisionGroupDevice()
+
+  // For enroll with X.509 certificate
+  // const { connectionString, deviceCert } = await provisionX509Device()
+
+  console.log(connectionString)
+  console.log()
+
+  const client: DeviceClient = DeviceClient.fromConnectionString(connectionString, Mqtt)
+
+  // client.setOptions(modelIdObject)
+
+  // For auth with X.509 certificate
+  // client.setOptions(deviceCert)
+
+  sendMessage(client)
+  setInterval(() => sendMessage(client), 10000)
 }
 
 main()
