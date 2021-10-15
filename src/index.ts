@@ -7,7 +7,7 @@ import { Message } from 'azure-iot-device'
 import { provisionDevice, provisionGroupDevice, provisionX509Device } from './dps'
 
 // Using the Azure CLI:
-// az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
+// az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id {YourDeviceId} --output table
 let connectionString: string = process.env.DEVICE_CONNECTION_STRING || '{YOUR_DEVICE_CONNECTION_STRING}'
 
 const symmetricKey = process.env.IOTHUB_DEVICE_DPS_DEVICE_KEY || ''
